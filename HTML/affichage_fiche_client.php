@@ -20,7 +20,7 @@ include 'connexion.php';
             echo $donnees['adresseMail'].'<br>';
             echo $donnees['distanceAgence'].'<br>';
             echo $donnees['dureeTrajet'].'<br>';
-            echo $donnees['numAgence'].'<br>';
+            echo $donnees['numAgence'].'<br>'.'<br>';
         }
         ?>
     </body>
