@@ -10,17 +10,17 @@ include 'connexion.php';
         $requete=$bdd->query('SELECT * FROM Client');
 
         while($donnees=$requete->fetch()){
-            echo $donnees['numClient'];
-            echo $donnees['raisonSociale'];
-            echo $donnees['numSIREN'];
-            echo $donnees['codeAPE'];
-            echo $donnees['adressePostale'];
-            echo $donnees['numTelephone'];
-            echo $donnees['numTelecopie'];
-            echo $donnees['adresseMail'];
-            echo $donnees['distanceAgence'];
-            echo $donnees['dureeTrajet'];
-            echo $donnees['numAgence'];
+            echo $donnees['numClient'].'<br>';
+            echo $donnees['raisonSociale'].'<br>';
+            echo $donnees['numSIREN'].'<br>';
+            echo $donnees['codeAPE'].'<br>';
+            echo $donnees['adressePostale'].'<br>';
+            echo $donnees['numTelephone'].'<br>';
+            echo $donnees['numTelecopie'].'<br>';
+            echo $donnees['adresseMail'].'<br>';
+            echo $donnees['distanceAgence'].'<br>';
+            echo $donnees['dureeTrajet'].'<br>';
+            echo $donnees['numAgence'].'<br>';
         }
         ?>
     </body>
