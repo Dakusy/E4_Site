@@ -6,23 +6,11 @@ include 'connexion.php';
 <!DOCTYPE html>
 <html lang="fr">
     <body>
-        <?php
-        $requete=$bdd->query('SELECT * FROM Client');
-
-        while($donnees=$requete->fetch()){
-            echo $donnees['numClient'].'<br>';
-            echo $donnees['raisonSociale'].'<br>';
-            echo $donnees['numSIREN'].'<br>';
-            echo $donnees['codeAPE'].'<br>';
-            echo $donnees['adressePostale'].'<br>';
-            echo $donnees['numTelephone'].'<br>';
-            echo $donnees['numTelecopie'].'<br>';
-            echo $donnees['adresseMail'].'<br>';
-            echo $donnees['distanceAgence'].'<br>';
-            echo $donnees['dureeTrajet'].'<br>';
-            echo $donnees['numAgence'].'<br>'.'<br>';
-        }
-        ?>
+        <form action="traitement_fiche_client.php" method="post">
+            <label>Numéro de client: </label><input type="text" name="numClient" value=""><br>
+            <input type="submit" value="Visualiser" name="visualiser">
+            <input type="submit" value="Modifier" name="modifier">
+        </form>
     </body>
     <?php 
     include 'bootstrap.php';
