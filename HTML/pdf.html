@@ -2,28 +2,51 @@
 <html> 
 <head> 
 <meta charset="utf-8"> 
+        <link rel="stylesheet" href="test.css">
 <title>test</title> 
 </head> 
 
 <body> 
-<form ACTION="pdf.php" METHOD="post"> 
     
-Numero <input type="text" name="nom">
+   <h1>Formulaire</h1> 
+<br>
+    <p><i>Complétez le formulaire. Les champs marqué par </i><em>*</em> sont <em>obligatoires</em></p>
     
-Date <input type="date" name = "date">
+<center><fieldset><form ACTION="pdf.php" METHOD="post"> 
+
+    <legend><h2>Fiche D'intervention</h2></legend>
     
-Heure (hh:mm) <input type="text" name = "heure">
+<em>*</em> Numero : <input type="number" name="nom" required = "">
     
-tempsIntervention (hh:mm) <input type = "text" name= "tempsIntervention">
+<br>
     
-commentaireTechnicien <input type = "text" name = "commentaireTechnicien">
+<em>*</em> Date : <input type="date" name = "date" required = "">
     
-numClient <input type = "text" name = "numClient">
+<br>
     
-numEmploye <input type = "text" name = "numEmploye">
+<em>*</em> Heure : <input type="text" name = "heure" required = "" placeholder = "hh:mm">
+
+<br>
     
-<input type="submit" value="pdf"> 
+<em>*</em> tempsIntervention : <input type = "text" name= "tempsIntervention" required = "" placeholder = "hh:mm">
     
-</form> 
+<br>
+    
+<em>*</em> commentaireTechnicien : <input type = "text" name = "commentaireTechnicien" required = "">
+    
+<br>
+    
+<em>*</em> numClient : <input type = "number" name = "numClient" required = "">
+    
+<br>
+    
+<em>*</em> numEmploye : <input type = "number" name = "numEmploye" required = "">
+    
+<br>
+    <br>
+    <p><input type = "reset" >
+    <input type="submit" value="pdf"> </p>
+    
+    </form> </fieldset></center>
 </body> 
 </html>
