@@ -1,6 +1,5 @@
 <?php 
 session_start();
-session_unset();
 include 'connexion.php';
 ?>
 <!DOCTYPE html>
@@ -8,7 +7,7 @@ include 'connexion.php';
     <body>
         <?php
         $requete=$bdd->prepare('SELECT * FROM Client WHERE numClient=:numClient');
-        $requete->bindParam(':numClient',$_POST['visualiser']);
+        $requete->bindParam(':numClient',$_SESSION['numClient']);
         $requete->execute();
 
         while($donnees=$requete->fetch()){

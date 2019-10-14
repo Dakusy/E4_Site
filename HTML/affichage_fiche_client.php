@@ -1,6 +1,5 @@
 <?php 
 session_start();
-session_unset();
 include 'connexion.php';
 ?>
 <!DOCTYPE html>
