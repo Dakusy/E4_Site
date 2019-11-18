@@ -16,7 +16,7 @@
 
     <legend><h2>Fiche D'intervention</h2></legend>
     
-<em>*</em> Numero : <input type="number" name="nom" required = "">
+<em>*</em> Numero : <input type="number" name="numIntervention" required = "">
     
 <br>
     
@@ -45,7 +45,7 @@
 <br>
     <br>
     <p><input type = "reset" >
-    <input type="submit" value="Insertion"> </p>
+    <input type="submit" value="insertion"> </p>
     
     </form> </fieldset></center>
 </body> 
