@@ -14,7 +14,11 @@ session_unset();
                 <section class = "col-lg-4 offset-lg-4">
                     <br><br>
                     <div class = "jumbotron">
+<<<<<<< HEAD
                         <form method="post" action="./acceuil.php">
+=======
+                        <form method="post" action="affichage_fiche_client.php">
+>>>>>>> master
                             <h1>
                                 Connexion CashCash
                             </h1>

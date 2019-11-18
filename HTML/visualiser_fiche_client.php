@@ -11,17 +11,17 @@ include 'connexion.php';
         $requete->execute();
 
         while($donnees=$requete->fetch()){
-            echo $donnees['numClient'].'<br>';
-            echo $donnees['raisonSociale'].'<br>';
-            echo $donnees['numSIREN'].'<br>';
-            echo $donnees['codeAPE'].'<br>';
-            echo $donnees['adressePostale'].'<br>';
-            echo $donnees['numTelephone'].'<br>';
-            echo $donnees['numTelecopie'].'<br>';
-            echo $donnees['adresseMail'].'<br>';
-            echo $donnees['distanceAgence'].'<br>';
-            echo $donnees['dureeTrajet'].'<br>';
-            echo $donnees['numAgence'].'<br>'.'<br>';
+            echo 'Numéro Client: '.$donnees['numClient'].'<br>';
+            echo 'Raison Sociale: '.$donnees['raisonSociale'].'<br>';
+            echo 'Numéro SIREN: '.$donnees['numSIREN'].'<br>';
+            echo 'Code APE: '.$donnees['codeAPE'].'<br>';
+            echo 'Adresse Postale: '.$donnees['adressePostale'].'<br>';
+            echo 'Numéro de Téléphone: '.$donnees['numTelephone'].'<br>';
+            echo 'Numéro de Télécopie: '.$donnees['numTelecopie'].'<br>';
+            echo 'Adresse Mail: '.$donnees['adresseMail'].'<br>';
+            echo 'Distance Agence: '.$donnees['distanceAgence'].'<br>';
+            echo 'Durée du trajet: '.$donnees['dureeTrajet'].'<br>';
+            echo 'Numéro d\'agence: '.$donnees['numAgence'].'<br>'.'<br>';
         }
         ?>
     </body>
