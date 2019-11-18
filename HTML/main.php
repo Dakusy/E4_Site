@@ -14,7 +14,7 @@ session_unset();
                 <section class = "col-lg-4 offset-lg-4">
                     <br><br>
                     <div class = "jumbotron">
-                        <form method="post" action="">
+                        <form method="post" action="./acceuil.php">
                             <h1>
                                 Connexion CashCash
                             </h1>
