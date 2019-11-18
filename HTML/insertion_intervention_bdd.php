@@ -55,7 +55,7 @@ document.location.href="formulaire_insertion_intervention.php";
 	
 	<input type="submit" value="Oui" >
 	</form>
-	
+	<br>
 	<form ACTION="formulaire_insertion_intervention.php" METHOD="post">
 	<input type="submit" value="Non"></center></p>
 	</form>
