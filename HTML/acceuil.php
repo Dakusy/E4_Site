@@ -10,8 +10,12 @@ if($vide>0){
     while($resultRole=$role->fetch()){
         if($resultRole["role"]==1){
             echo "technicien";
+            header('Location: http://www.example.com/');
+exit;
         }else if($resultRole["role"]==2){
             echo "assistant";
+            header('Location: http://localhost/e4_site/html/affichage_fiche_client.php');
+exit;
         }else{
 ?>
 <script>
