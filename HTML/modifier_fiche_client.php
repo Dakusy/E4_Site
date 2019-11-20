@@ -12,7 +12,7 @@ include 'connexion.php';
         $donnees=$requete->fetch();
         ?>
         <form action="update_client_bdd.php" method="post">
-            <label>Numéro Client: </label><input type="hidden" name="numClient" value="<?php echo $donnees['numClient'];?>"><br>
+            <input type="hidden" name="numClient" value="<?php echo $donnees['numClient'];?>"><br>
             <label>Raison Sociale: </label><input type="text" name="raisonSociale" value="<?php echo $donnees['raisonSociale'];?>"><br>
             <label>Numéro SIREN: </label><input type="text" name="numSIREN" value="<?php echo $donnees['numSIREN'];?>"><br>
             <label>Code APE: </label><input type="text" name="codeAPE" value="<?php echo $donnees['codeAPE'];?>"><br>
