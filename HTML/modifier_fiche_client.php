@@ -6,6 +6,7 @@ include 'connexion.php';
 <html lang="fr">
     <body>
         <?php
+		//Création d'un requête pour récuperer les données de fiche client pour les modifiers ensuite
         $requete=$bdd->prepare('SELECT * FROM Client WHERE numClient=:numClient');
         $requete->bindParam(':numClient',$_SESSION['numClient']);
         $requete->execute();
