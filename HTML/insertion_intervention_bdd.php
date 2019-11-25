@@ -2,8 +2,6 @@
 session_start();
 include 'connexion.php';
 
-//Récupere les données du Formulaire
-
 if(isset($_POST['numIntervention']))
 {
 $_SESSION['numIntervention'] = $_POST["numIntervention"]; 
@@ -14,8 +12,6 @@ $_SESSION['commentaireTechnicien'] = $_POST["commentaireTechnicien"];
 $_SESSION['numClient'] = $_POST["numClient"];
 $_SESSION['$numEmploye'] = $_POST["numEmploye"];
 }
-
-//création d'une requête pour vérifier si les odnnées existe déjà
 
 $req = $bdd->prepare("SELECT numIntervention FROM Intervention WHERE numIntervention = :numIntervention ");
 	$req->execute(array(
@@ -37,8 +33,6 @@ $req2 = $bdd->prepare("INSERT INTO Intervention (numIntervention, date, heure, t
 			));
 }
 
-//Renvoie une erreur si problème 
-
 else{
 	
 ?>
@@ -53,9 +47,6 @@ document.location.href="formulaire_insertion_intervention.php";
 }
 ?>
 
-
-<!-- Possibilité de générer un PDF immédiatement si besoin sinon retour page formulaire -->
-
 <!DOCTYPE html>
 <html lang="fr">
     <body>
@@ -64,8 +55,8 @@ document.location.href="formulaire_insertion_intervention.php";
 	
 	<input type="submit" value="Oui" >
 	</form>
-	<br>
-	<form ACTION="formulaire_insertion_intervention.php" METHOD="post">
+	
+	<form ACTION="modifier_intervention.php" METHOD="post">
 	<input type="submit" value="Non"></center></p>
 	</form>
 	

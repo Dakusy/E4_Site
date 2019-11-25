@@ -6,8 +6,19 @@ include 'connexion.php';
 <html lang="fr">
     <body>
         <?php
+	/*	class DateFormat {
+	public static function alter($date, $before, $after) {
+		return DateTime::createFromFormat($before, $date)->format($after);
+	}
+	public static function toSQL($date, $before = 'd/m/Y') {
+		return self::alter($date, $before, 'Y-m-d H:i:s');
+	}
+	public static function toHTML($date, $before = 'Y-m-d H:i:s') {
+		return self::alter($date, $before, 'd/m/Y');
+	}
+}*/
         $requete=$bdd->prepare('UPDATE Intervention SET date=:date,heure=:heure,tempsIntervention=:tempsIntervention,commentaireTechnicien=:commentaireTechnicien,numClient=:numClient,numEmploye=:numEmploye WHERE numIntervention=:numIntervention');
-        
+		$requete->bindParam(':numIntervention',$_POST['numIntervention']);
         $requete->bindParam(':date',$_POST['date']);
         $requete->bindParam(':heure',$_POST['heure']);
         $requete->bindParam(':tempsIntervention',$_POST['tempsIntervention']);
@@ -17,7 +28,7 @@ include 'connexion.php';
         
         $requete->execute();
         
-        header('Location: affichage_Intervention.php');
+        //header('Location: affichage_Intervention.php');
         ?>
     </body>
 </html>
