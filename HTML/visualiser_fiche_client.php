@@ -10,6 +10,7 @@ include 'connexion.php';
         $requete->bindParam(':numClient',$_SESSION['numClient']);
         $requete->execute();
 
+        echo 'ZIZI';
         while($donnees=$requete->fetch()){
             echo 'Numéro Client: '.$donnees['numClient'].'<br>';
             echo 'Raison Sociale: '.$donnees['raisonSociale'].'<br>';
