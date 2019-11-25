@@ -23,7 +23,7 @@ include 'connexion.php';
             <label>Distance Agence: </label><input type="text" name="distanceAgence" value="<?php echo $donnees['distanceAgence'];?>"><br>
             <label>Durée du trajet: </label><input type="text" name="dureeTrajet" value="<?php echo $donnees['dureeTrajet'];?>"><br>
             <label>Numéro d'agence: </label><input type="text" name="numAgence" value="<?php echo $donnees['numAgence'];?>"><br>
-            <input type="button" value="Insertion">
+            <input type="submit" value="Insertion">
         </form>
     </body>
 </html>
