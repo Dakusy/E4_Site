@@ -6,8 +6,9 @@
 <title>test</title> 
 </head> 
 
+<!-- Création du formulaire  -->
 <body> 
-    
+ 
    <h1>Formulaire</h1> 
 <br>
     <p><i>Complétez le formulaire. Les champs marqué par </i><em>*</em> sont <em>obligatoires</em></p>
