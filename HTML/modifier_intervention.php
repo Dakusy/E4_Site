@@ -18,8 +18,38 @@ include 'connexion.php';
 			<input type="hidden" name="commentaireTechnicien" value="<?php echo $donnees['commentaireTechnicien'];?>"><br>
             <label>Date: </label><input type="date" name="date" value="<?php echo $donnees['date'];?>"><br>
             <label>Heure: </label><input type="text" name="heure" value="<?php echo $donnees['heure'];?>"><br>
-            <label>Numero de Client: </label><input type="text" name="numClient" value="<?php echo $donnees['numClient'];?>"><br>
-            <label>Numero d'employe: </label><input type="text" name="numEmploye" value="<?php echo $donnees['numEmploye'];?>"><br>
+			
+			
+			
+            <label>Numero de Client: </label>  
+   <select name "numClient" size="1"> 
+<?php
+ 
+$resultat=$bdd->query("SELECT * FROM client");
+$resultat->setFetchMode(PDO::FETCH_ASSOC);
+ 
+foreach ($resultat as $data)
+ 
+{
+  echo '<option value="' . $data['numClient'] . '">' . $data['numClient'] . '</option>';
+}
+?>
+   </select>		
+			
+            <label>Numero d'employe: </label>
+	<select name "numEmploye" size="1">
+<?php
+ 
+$resultat1=$bdd->query("SELECT * FROM assistant_telephonique");
+$resultat1->setFetchMode(PDO::FETCH_ASSOC);
+ 
+foreach ($resultat1 as $data1)
+ 
+{
+  echo '<option value="' . $data1['numEmploye'] . '">' . $data1['numEmploye'] . '</option>';
+}
+?>
+			</select>
             <input type="submit" value="insertion">
         </form>
     </body>
