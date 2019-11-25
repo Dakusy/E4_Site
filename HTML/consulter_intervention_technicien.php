@@ -12,11 +12,11 @@ include 'connexionTechnicien.php';
                     <div class = "jumbotron">
                         <div class= "offset-2">
                             <div class="form-group row">
-                                <form action="traitement_fiche_client.php" method="post">
-                                    <div class="col-lg-5">
+                                <form action="traitement_fiche_intervention.php" method="post">
+                                    <div class="col-lg-8">
                                         <label>Numéro d'intervention: </label>
-                                        <input type="text" name="numClient" value=""><br>
-
+                                        <input type="text" name="numIntervention" value=""><br>
+                                        <br>
                                         <select multiple class="form-control col-12" id="exampleFormControlSelect2" size = 10 style = "width: auto" name="numCLient">
                                             <?php
                                             $idTech="SELECT numEmploye 
@@ -34,8 +34,9 @@ include 'connexionTechnicien.php';
                                             }
                                             ?>
                                         </select>
-                                        <input type="submit" value="Visualiser" name="visualiser">
-                                        <input type="submit" value="Modifier" name="modifier">
+                                        <br>
+                                        <input type="submit" value="Consulter" name="Consulter">
+                                        
                                     </div>
                                 </form>
                             </div>
