@@ -1,5 +1,8 @@
 <?php 
 session_start();
+
+//Classe FPDF requise pour le PDF
+
 require('fpdf/fpdf.php'); 
 
 class PDF extends FPDF 
@@ -37,6 +40,8 @@ $pdf->AliasNbPages();
 $pdf->AddPage(); 
 $pdf->SetFont('Times','',12); 
 
+//Affichage des différents champs du formulaire 
+
 if (isset($_SESSION['numIntervention'])){ 
 $pdf->Cell(50,10,"Numero D'intervention : " . $_SESSION['numIntervention'],0,1);}
     
@@ -64,6 +69,7 @@ if (isset($_SESSION['$numEmploye'])){
 $pdf->Cell(50,10,"Numero D'employe : " . $_SESSION['$numEmploye'],0,1);}
 }
 
+//Affichage du PDF
 
 $pdf->Output(); 
 
