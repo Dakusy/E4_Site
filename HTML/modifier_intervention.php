@@ -28,6 +28,8 @@ include 'connexion.php';
 $resultat=$bdd->query("SELECT * FROM client");
 $resultat->setFetchMode(PDO::FETCH_ASSOC);
  
+ // Utilisation d'un foreach pour rechercher tout les numClients pour les afficher dans une liste à selectionner
+
 foreach ($resultat as $data)
  
 {
@@ -43,6 +45,8 @@ foreach ($resultat as $data)
 $resultat1=$bdd->query("SELECT * FROM assistant_telephonique");
 $resultat1->setFetchMode(PDO::FETCH_ASSOC);
  
+
+ // Utilisation d'un foreach pour rechercher tout les numEmployes pourl es afficher dans une liste à sélectionner
 foreach ($resultat1 as $data1)
  
 {

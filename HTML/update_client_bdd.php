@@ -6,6 +6,7 @@ include 'connexion.php';
 <html lang="fr">
     <body>
         <?php
+        // Preparation d'un requête pour update un client par rapport à la table Client
         $requete=$bdd->prepare('UPDATE Client SET raisonSociale=:raisonSociale,numSIREN=:numSIREN,codeAPE=:codeAPE,adressePostale=:adressePostale,numTelephone=:numTelephone,numTelecopie=:numTelecopie,adresseMail=:adresseMail,distanceAgence=:distanceAgence,dureeTrajet=:dureeTrajet,numAgence=:numAgence WHERE numClient=:numClient');
         
         $requete->bindParam(':raisonSociale',$_POST['raisonSociale']);

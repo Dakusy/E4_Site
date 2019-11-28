@@ -6,6 +6,8 @@ include 'connexion.php';
 <html lang="fr">
     <body>
         <?php
+
+        //Utilisation de DateFormat pour convertir la date HTML en PHP mais obsolète vu qu'on récupere les données directement depuis la BDD
 	/*	class DateFormat {
 	public static function alter($date, $before, $after) {
 		return DateTime::createFromFormat($before, $date)->format($after);

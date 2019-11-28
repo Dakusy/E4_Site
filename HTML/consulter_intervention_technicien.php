@@ -17,6 +17,7 @@ include 'connexionTechnicien.php';
                                         <label>Numéro d'intervention: </label>
                                         <input type="text" name="numIntervention" value=""><br>
                                         <br>
+                                        <!-- Consultation des interventions par un technicien -->
                                         <select multiple class="form-control col-12" id="exampleFormControlSelect2" size = 10 style = "width: auto" name="numCLient">
                                             <?php
                                             $idTech="SELECT numEmploye 
