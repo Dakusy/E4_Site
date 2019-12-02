@@ -1,7 +1,8 @@
 <?php
 session_start();
 include 'connexion.php';
-
+ // Création de variable SESSION pour les informations des interventions pour une simplicité général dans nos pages 
+ 
 if(isset($_POST['numIntervention']))
 {
 $_SESSION['numIntervention'] = $_POST["numIntervention"]; 
@@ -12,6 +13,7 @@ $_SESSION['commentaireTechnicien'] = $_POST["commentaireTechnicien"];
 $_SESSION['numClient'] = $_POST["numClient"];
 $_SESSION['$numEmploye'] = $_POST["numEmploye"];
 }
+// Appel de 2 requêtes pour préparer et insérer les données d'intervention dans la BDD
 
 $req = $bdd->prepare("SELECT numIntervention FROM Intervention WHERE numIntervention = :numIntervention ");
 	$req->execute(array(
@@ -49,6 +51,9 @@ document.location.href="formulaire_insertion_intervention.php";
 
 <!DOCTYPE html>
 <html lang="fr">
+
+<!-- Demande pour génerer le PDF maintenant ou plus tard -->
+
     <body>
 	<center><form ACTION="pdf.php" METHOD="post">
 	<p>Voulez vous génerer un PDF lié à votre Intervention ou ultérieurement ?

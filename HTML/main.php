@@ -7,6 +7,8 @@ session_unset();
     <title>
         Acceuil
     </title>
+	
+<!--Page de connexion à CashCash -->
 
     <body>
         <center>

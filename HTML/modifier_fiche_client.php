@@ -6,12 +6,18 @@ include 'connexion.php';
 <html lang="fr">
     <body>
         <?php
+		
 		//Création d'un requête pour récuperer les données de fiche client pour les modifiers ensuite
+		
+		
         $requete=$bdd->prepare('SELECT * FROM Client WHERE numClient=:numClient');
         $requete->bindParam(':numClient',$_SESSION['numClient']);
         $requete->execute();
         $donnees=$requete->fetch();
         ?>
+		
+		<!-- Formulaire pour modifier à souhait les informations disponible à modification de la fiche client. -->
+		
         <form action="update_client_bdd.php" method="post">
             <input type="hidden" name="numClient" value="<?php echo $donnees['numClient'];?>"><br>
             <label>Raison Sociale: </label><input type="text" name="raisonSociale" value="<?php echo $donnees['raisonSociale'];?>"><br>

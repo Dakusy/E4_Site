@@ -6,12 +6,17 @@ include 'connexion.php';
 <html lang="fr">
     <body>
         <?php
+		
 		//Création d'un requête pour récuperer les données de fiche intervention pour les modifiers ensuite
+		
         $requete=$bdd->prepare('SELECT * FROM Intervention WHERE numIntervention=:numIntervention');
         $requete->bindParam(':numIntervention',$_SESSION['numIntervention']);
         $requete->execute();
         $donnees=$requete->fetch();
         ?>
+		
+		<!-- Formulaire pour modifier à souhait les informations disponible à modification d'une intervention. -->
+		
         <form action="update_intervention.php" method="post">
             <input type="hidden" name="numIntervention" value="<?php echo $donnees['numIntervention'];?>"><br>
 			<input type="hidden" name="tempsIntervention" value="<?php echo $donnees['tempsIntervention'];?>"><br>

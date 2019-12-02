@@ -6,11 +6,15 @@ include 'connexion.php';
 <html lang="fr">
     <body>
         <?php
+		
+		// préparation d'une requête pour récupérer les données depuis la table Client.
+		
         $requete=$bdd->prepare('SELECT * FROM Client WHERE numClient=:numClient');
         $requete->bindParam(':numClient',$_SESSION['numClient']);
         $requete->execute();
 
-        echo 'ZIZI';
+		// Visualisation des données de la fiche clien sélectionné.
+
         while($donnees=$requete->fetch()){
             echo 'Numéro Client: '.$donnees['numClient'].'<br>';
             echo 'Raison Sociale: '.$donnees['raisonSociale'].'<br>';
