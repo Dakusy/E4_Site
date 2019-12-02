@@ -23,7 +23,25 @@ include 'connexion.php';
             <label>Adresse Mail: </label><input type="text" name="adresseMail" value="<?php echo $donnees['adresseMail'];?>"><br>            
             <label>Distance Agence: </label><input type="text" name="distanceAgence" value="<?php echo $donnees['distanceAgence'];?>"><br>
             <label>Durée du trajet: </label><input type="text" name="dureeTrajet" value="<?php echo $donnees['dureeTrajet'];?>"><br>
-            <label>Numéro d'agence: </label><input type="text" name="numAgence" value="<?php echo $donnees['numAgence'];?>"><br>
+			
+			
+			            <label>Numero d'Agence: </label>   
+   <select name = "numAgence" id  = "numAgence">  
+<?php 
+  
+$resultat=$bdd->query("SELECT * FROM agence"); 
+$resultat->setFetchMode(PDO::FETCH_ASSOC); 
+  
+foreach ($resultat as $data) 
+  
+{ 
+   echo '<option value="' . $data['numAgence'] . '">' . $data['numAgence'] . '</option>'; 
+  
+} 
+
+?> 
+   </select>	
+			
             <input type="submit" value="Insertion">
         </form>
     </body>
