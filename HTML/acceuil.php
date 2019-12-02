@@ -2,7 +2,7 @@
 session_start();
 include 'connexion.php';
 
-//Page de connexion pour le site 
+//Traitement pour la connexion des utilisateurs Technicien ou Assistant 
 
 $_SESSION['login']=$_POST['identifiant'];
 $_SESSION['mdp']=$_POST['motdepasse'];

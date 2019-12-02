@@ -4,6 +4,9 @@ include 'connexionAssistant.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
+<!-- Affiche les informations lié à une fiche Client -->
+
     <body>
         <center>
             <div class = "row">
