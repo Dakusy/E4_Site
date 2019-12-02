@@ -25,7 +25,7 @@ include 'connexion.php';
         $requete->bindParam(':heure',$_POST['heure']);
         $requete->bindParam(':tempsIntervention',$_POST['tempsIntervention']);
         $requete->bindParam(':commentaireTechnicien',$_POST['commentaireTechnicien']);
-        $requete->bindParam(':numClient',$_POST['numClient']);
+		$requete->bindParam(':numClient',$_POST['numClient']);
         $requete->bindParam(':numEmploye',$_POST['numEmploye']);
         
         $requete->execute();

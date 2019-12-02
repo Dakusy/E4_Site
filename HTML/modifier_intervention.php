@@ -21,39 +21,37 @@ include 'connexion.php';
 			
 			
 			
-            <label>Numero de Client: </label>  
-   <select name "numClient" size="1"> 
-<?php
- 
-$resultat=$bdd->query("SELECT * FROM client");
-$resultat->setFetchMode(PDO::FETCH_ASSOC);
- 
- // Utilisation d'un foreach pour rechercher tout les numClients pour les afficher dans une liste à selectionner
+            <label>Numero de Client: </label>   
+   <select name = "numClient" id  = "numClient">  
+<?php 
+  
+$resultat=$bdd->query("SELECT * FROM client"); 
+$resultat->setFetchMode(PDO::FETCH_ASSOC); 
+  
+foreach ($resultat as $data) 
+  
+{ 
+   echo '<option value="' . $data['numClient'] . '">' . $data['numClient'] . '</option>'; 
+  
+} 
 
-foreach ($resultat as $data)
- 
-{
-  echo '<option value="' . $data['numClient'] . '">' . $data['numClient'] . '</option>';
-}
+?> 
+   </select>		 
+			 
+        <label>Numero d'employe: </label> 
+	<select name  = "numEmploye"> 
+<?php 
+  
+$resultat1=$bdd->query("SELECT * FROM technicien"); 
+$resultat1->setFetchMode(PDO::FETCH_ASSOC); 
+  
+foreach ($resultat1 as $data1) 
+  
+{ 
+  echo '<option value="' . $data1['numEmploye'] . '">' . $data1['numEmploye'] . '</option>'; 
+} 
 ?>
-   </select>		
-			
-            <label>Numero d'employe: </label>
-	<select name "numEmploye" size="1">
-<?php
- 
-$resultat1=$bdd->query("SELECT * FROM assistant_telephonique");
-$resultat1->setFetchMode(PDO::FETCH_ASSOC);
- 
-
- // Utilisation d'un foreach pour rechercher tout les numEmployes pourl es afficher dans une liste à sélectionner
-foreach ($resultat1 as $data1)
- 
-{
-  echo '<option value="' . $data1['numEmploye'] . '">' . $data1['numEmploye'] . '</option>';
-}
-?>
-			</select>
+			</select> 
             <input type="submit" value="insertion">
         </form>
     </body>
