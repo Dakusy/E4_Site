@@ -5,9 +5,6 @@ include 'connexion.php';
 <!DOCTYPE html>
 <html lang="fr">
     <body>
-	
-	 <!-- Traitement pour la fiche intervention  par rapport au numéro d'Intervention. -->
-	
         <?php
         $_SESSION['numIntervention']=$_POST['numIntervention'];
         $requete=$bdd->prepare('SELECT * FROM Intervention WHERE numIntervention=:numIntervention');

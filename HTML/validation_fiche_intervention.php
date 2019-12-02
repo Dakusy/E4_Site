@@ -5,7 +5,6 @@ include 'connexion.php';
 <!DOCTYPE html>
 <html lang="fr">
     <body>
-	<!-- Page permettant la validation d'une fiche intervention par le biais d'une requête et d'une visualisation des données. -->
         <?php
         $_SESSION['numIntervention']=$_POST['numIntervention'];
         $requete=$bdd->prepare('SELECT * FROM Intervention WHERE numIntervention=:numIntervention');
