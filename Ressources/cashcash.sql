@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 02 déc. 2019 à 09:17
+-- Généré le :  lun. 09 déc. 2019 à 08:05
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -65,6 +65,13 @@ CREATE TABLE IF NOT EXISTS `assistant_telephonique` (
   PRIMARY KEY (`numEmploye`),
   KEY `fk_codeRegionAssistant` (`codeRegion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `assistant_telephonique`
+--
+
+INSERT INTO `assistant_telephonique` (`numEmploye`, `nom`, `prenom`, `adressePerso`, `dateEmbauche`, `codeRegion`) VALUES
+(2, 'cappelle', 'jessy', '12 rue des nuggets', '2019-11-12', 1);
 
 -- --------------------------------------------------------
 
@@ -157,7 +164,14 @@ CREATE TABLE IF NOT EXISTS `intervention` (
   PRIMARY KEY (`numIntervention`),
   KEY `fk_numEmploye` (`numEmploye`),
   KEY `fk_numClientIntervention` (`numClient`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `intervention`
+--
+
+INSERT INTO `intervention` (`numIntervention`, `date`, `heure`, `tempsIntervention`, `commentaireTechnicien`, `numClient`, `numEmploye`) VALUES
+(1, '2019-12-02', '17h30', '', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -204,19 +218,6 @@ INSERT INTO `region` (`codeRegion`, `libelle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `roles`
---
-
-DROP TABLE IF EXISTS `roles`;
-CREATE TABLE IF NOT EXISTS `roles` (
-  `idRoles` int(1) NOT NULL,
-  `libelle` varchar(25) NOT NULL,
-  PRIMARY KEY (`idRoles`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `technicien`
 --
 
@@ -235,6 +236,13 @@ CREATE TABLE IF NOT EXISTS `technicien` (
   PRIMARY KEY (`numEmploye`),
   KEY `fk_numAgenceTech` (`numAgence`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `technicien`
+--
+
+INSERT INTO `technicien` (`numEmploye`, `nom`, `prenom`, `adressePerso`, `mail`, `numTelephone`, `qualification`, `dateObtentionQualification`, `dateEmbauche`, `numAgence`) VALUES
+(1, 'TOURDOT', 'Thomas', '40 rue de la blitzkrieg', 'flemme@flemme.fl', '0658521793', 'Master EZ', '2019-06-03', '2019-11-04', 1);
 
 -- --------------------------------------------------------
 
@@ -263,8 +271,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   `login` varchar(30) NOT NULL,
   `mdp` varchar(30) NOT NULL,
   `role` int(1) NOT NULL,
+  `proprietaireTech` int(11) NOT NULL,
+  `proprietaireAssistant` int(11) NOT NULL,
   PRIMARY KEY (`idUsers`),
-  KEY `FK_RolesUsers` (`role`)
+  KEY `FK_RolesUsers` (`role`),
+  KEY `proprietaireTech` (`proprietaireTech`),
+  KEY `proprietaireAssistant` (`proprietaireAssistant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -332,7 +344,9 @@ ALTER TABLE `typemateriel`
 -- Contraintes pour la table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `FK_RolesUsers` FOREIGN KEY (`role`) REFERENCES `roles` (`idRoles`);
+  ADD CONSTRAINT `FK_RolesUsers` FOREIGN KEY (`role`) REFERENCES `roles` (`idRoles`),
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`proprietaireTech`) REFERENCES `technicien` (`numEmploye`),
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`proprietaireAssistant`) REFERENCES `assistant_telephonique` (`numEmploye`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
