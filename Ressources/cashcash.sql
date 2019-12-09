@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 09 déc. 2019 à 08:05
+-- Généré le :  lun. 09 déc. 2019 à 09:54
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -39,14 +39,26 @@ CREATE TABLE IF NOT EXISTS `agence` (
   `codeRegion` int(11) NOT NULL,
   PRIMARY KEY (`numAgence`),
   KEY `fk_codeRegion` (`codeRegion`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `agence`
 --
 
 INSERT INTO `agence` (`numAgence`, `nom`, `adressePostale`, `numTelephone`, `adresseMail`, `numTelecopie`, `codeRegion`) VALUES
-(1, 'SklaveCorp', '59110', '0659501596', 'SklaveCorp@DUA.fr', '01-40-50-60-70', 1);
+(1, 'Agence du Nord', '59000', '0301459643', 'agenceNord@cashcash.fr', '01-40-50-60-70', 1),
+(2, 'Agence IDF', '75000', '0350243819', 'agenceIDF@cashcash.fr', '01-50-60-70-80', 2),
+(3, 'Agence Grand Est', '57000', '0336492078', 'agenceGrandEst@cashcash.fr', '01-30-40-50-60', 3),
+(4, 'Agence BFC', '21000', '0378592364', 'agenceBFC@cashcash.fr', '01-70-50-60-70', 4),
+(5, 'Agence ARA', '69000', '0369853125', 'agenceARA@cashcash.fr', '01-10-50-60-70', 5),
+(6, 'Agence PACA', '13000', '0313587623', 'agencePACA@cashcash.fr', '01-90-60-70-80', 6),
+(7, 'Agence Occitanie', '31000', '0331654816', 'agenceOccitanie@cashcash.fr', '01-20-50-60-70', 7),
+(8, 'Agence Nouvelle-Aquitaine', '33000', '0333956748', 'agenceNA@cashcash.fr', '01-15-50-60-70', 8),
+(9, 'Agence CVdL', '45000', '0345247929', 'agenceCVdL@cashcash.fr', '01-10-40-20-70', 9),
+(10, 'Agence PdL', '44000', '0344856417', 'agencePdL@cashcash.fr', '01-65-82-70-80', 10),
+(11, 'Agence Bretagne', '29200', '0329546934', 'agenceBretagne@cashcash.fr', '01-29-50-90-70', 11),
+(12, 'Agence Normandie', '76600', '0376605464', 'agenceNormandie@cashcash.fr', '01-30-90-20-50', 12),
+(13, 'Agence Corse', '20200', '0320206824', 'agenceCorse@cashcash.fr', '01-20-20-40-90', 13);
 
 -- --------------------------------------------------------
 
@@ -71,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `assistant_telephonique` (
 --
 
 INSERT INTO `assistant_telephonique` (`numEmploye`, `nom`, `prenom`, `adressePerso`, `dateEmbauche`, `codeRegion`) VALUES
-(2, 'cappelle', 'jessy', '12 rue des nuggets', '2019-11-12', 1);
+(1, 'David', 'Louis', 'rue jeanne maillotte', '2019-11-12', 1);
 
 -- --------------------------------------------------------
 
@@ -155,10 +167,10 @@ CREATE TABLE IF NOT EXISTS `famillemateriel` (
 DROP TABLE IF EXISTS `intervention`;
 CREATE TABLE IF NOT EXISTS `intervention` (
   `numIntervention` int(11) NOT NULL AUTO_INCREMENT,
-  `date` date NOT NULL,
-  `heure` varchar(5) NOT NULL,
+  `date` date DEFAULT NULL,
+  `heure` varchar(5) DEFAULT NULL,
   `tempsIntervention` varchar(20) NOT NULL,
-  `commentaireTechnicien` varchar(1024) NOT NULL,
+  `commentaireTechnicien` varchar(1024) DEFAULT NULL,
   `numClient` int(11) NOT NULL,
   `numEmploye` int(11) NOT NULL,
   PRIMARY KEY (`numIntervention`),
@@ -206,14 +218,26 @@ CREATE TABLE IF NOT EXISTS `region` (
   `codeRegion` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(50) NOT NULL,
   PRIMARY KEY (`codeRegion`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `region`
 --
 
 INSERT INTO `region` (`codeRegion`, `libelle`) VALUES
-(1, 'Haut-de-France');
+(1, 'Haut-de-France'),
+(2, 'Ile-de-France'),
+(3, 'Grand Est'),
+(4, 'Bourgogne-Franche-Comté'),
+(5, 'Auvergne-Rhône-Alpes'),
+(6, 'Provence-Alpes-Côte d\'Azur'),
+(7, 'Occitanie'),
+(8, 'Nouvelle-Aquitaine'),
+(9, 'Centre-Val de Loire'),
+(10, 'Pays de la Loire'),
+(11, 'Bretagne'),
+(12, 'Normandie'),
+(13, 'Corse');
 
 -- --------------------------------------------------------
 
@@ -242,7 +266,7 @@ CREATE TABLE IF NOT EXISTS `technicien` (
 --
 
 INSERT INTO `technicien` (`numEmploye`, `nom`, `prenom`, `adressePerso`, `mail`, `numTelephone`, `qualification`, `dateObtentionQualification`, `dateEmbauche`, `numAgence`) VALUES
-(1, 'TOURDOT', 'Thomas', '40 rue de la blitzkrieg', 'flemme@flemme.fl', '0658521793', 'Master EZ', '2019-06-03', '2019-11-04', 1);
+(1, 'Pierre', 'Jean', 'rue des Gantois', 'jean.pierre@gmail.com', '0658521793', 'Master', '2019-06-03', '2019-11-04', 1);
 
 -- --------------------------------------------------------
 
@@ -267,17 +291,15 @@ CREATE TABLE IF NOT EXISTS `typemateriel` (
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `idUsers` int(4) NOT NULL,
+  `idUsers` int(4) NOT NULL AUTO_INCREMENT,
   `login` varchar(30) NOT NULL,
   `mdp` varchar(30) NOT NULL,
-  `role` int(1) NOT NULL,
-  `proprietaireTech` int(11) NOT NULL,
-  `proprietaireAssistant` int(11) NOT NULL,
+  `proprietaireTech` int(11) DEFAULT NULL,
+  `proprietaireAssistant` int(11) DEFAULT NULL,
   PRIMARY KEY (`idUsers`),
-  KEY `FK_RolesUsers` (`role`),
   KEY `proprietaireTech` (`proprietaireTech`),
   KEY `proprietaireAssistant` (`proprietaireAssistant`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Contraintes pour les tables déchargées
@@ -344,7 +366,6 @@ ALTER TABLE `typemateriel`
 -- Contraintes pour la table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `FK_RolesUsers` FOREIGN KEY (`role`) REFERENCES `roles` (`idRoles`),
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`proprietaireTech`) REFERENCES `technicien` (`numEmploye`),
   ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`proprietaireAssistant`) REFERENCES `assistant_telephonique` (`numEmploye`);
 COMMIT;
