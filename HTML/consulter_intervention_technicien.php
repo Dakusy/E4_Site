@@ -4,9 +4,6 @@ include 'connexionTechnicien.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-    <?php
-
-    ?>
     <body>
         <center>
             <div class = "row">
@@ -37,6 +34,7 @@ include 'connexionTechnicien.php';
                                             WHERE u.proprietaire=t.numEmploye";
                                     $rqIdTech=$bdd->query($idTech);
                                     $idTech=$rqIdTech->fetch();
+                                    $_SESSION['numTechnicien']=$idTech['numEmploye'];
                                     $numIntervention="SELECT numIntervention 
                                             FROM intervention i INNER JOIN technicien t ON i.numEmploye=t.numEmploye 
                                             WHERE t.numEmploye=".$idTech['numEmploye']." 
@@ -72,6 +70,9 @@ include 'connexionTechnicien.php';
                                 <input type="submit" value="Valider">
                             </form>
                         </div>
+                        <form action="./stats_intervention.php" method="post">
+                            <button type="submit">Voir stats</button>
+                        </form>
                     </center>
                 </section>
             </div>
