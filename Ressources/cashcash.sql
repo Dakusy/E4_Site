@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 16 déc. 2019 à 08:04
+-- Généré le :  lun. 16 déc. 2019 à 09:46
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -167,6 +167,18 @@ CREATE TABLE IF NOT EXISTS `famillemateriel` (
   PRIMARY KEY (`codeFamille`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `famillemateriel`
+--
+
+INSERT INTO `famillemateriel` (`codeFamille`, `libelle`) VALUES
+('CB', 'lecteur de cartes'),
+('CP', 'caisse avec processeur'),
+('LO', 'lecteur optique'),
+('MO', 'modem'),
+('PC', 'petite caisse'),
+('SE', 'serveur');
+
 -- --------------------------------------------------------
 
 --
@@ -215,6 +227,13 @@ CREATE TABLE IF NOT EXISTS `materiel` (
   KEY `fk_refereceType` (`referenceType`),
   KEY `fk_numContrat` (`numContrat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `materiel`
+--
+
+INSERT INTO `materiel` (`numSerie`, `dateVente`, `dateInstallation`, `prix`, `emplacement`, `referenceType`, `numContrat`, `numClient`) VALUES
+('1353645', '2018-01-15', '2019-12-17', 650, 'rayon fruits et légumes', 'B550', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -275,7 +294,7 @@ CREATE TABLE IF NOT EXISTS `technicien` (
 --
 
 INSERT INTO `technicien` (`numEmploye`, `nom`, `prenom`, `adressePerso`, `mail`, `numTelephone`, `qualification`, `dateObtentionQualification`, `dateEmbauche`, `numAgence`) VALUES
-(1, 'Pierre', 'Jean', 'rue des Gantois', 'jean.pierre@gmail.com', '0658521793', 'Master', '2019-06-03', '2019-11-04', 1),
+(1, 'Pierre', 'Jean', 'Rue des Gantois', 'jean.pierre@gmail.com', '0658521793', 'Master', '2019-06-03', '2019-11-04', 1),
 (2, 'Jean', 'Baptiste', 'Rue Alain de Lille', 'baptiste.jean@hotmail.fr', '0616359548', 'BTS SIO SISR', '2019-06-20', '2019-09-09', 1);
 
 -- --------------------------------------------------------
@@ -286,12 +305,20 @@ INSERT INTO `technicien` (`numEmploye`, `nom`, `prenom`, `adressePerso`, `mail`,
 
 DROP TABLE IF EXISTS `typemateriel`;
 CREATE TABLE IF NOT EXISTS `typemateriel` (
-  `referenceType` varchar(2) NOT NULL,
+  `referenceType` varchar(4) NOT NULL,
   `libelle` varchar(50) NOT NULL,
   `codeFamille` varchar(2) NOT NULL,
   PRIMARY KEY (`referenceType`),
   KEY `fk_codeFamille` (`codeFamille`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `typemateriel`
+--
+
+INSERT INTO `typemateriel` (`referenceType`, `libelle`, `codeFamille`) VALUES
+('B450', 'TPV M150', 'PC'),
+('B550', 'TPV H720', 'CP');
 
 -- --------------------------------------------------------
 
