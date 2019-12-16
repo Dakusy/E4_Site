@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 09 déc. 2019 à 09:54
+-- Généré le :  lun. 16 déc. 2019 à 08:04
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -32,7 +32,7 @@ DROP TABLE IF EXISTS `agence`;
 CREATE TABLE IF NOT EXISTS `agence` (
   `numAgence` int(4) NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
-  `adressePostale` varchar(50) NOT NULL,
+  `adressePostale` varchar(5) NOT NULL,
   `numTelephone` varchar(10) NOT NULL,
   `adresseMail` varchar(50) NOT NULL,
   `numTelecopie` varchar(50) NOT NULL,
@@ -68,7 +68,7 @@ INSERT INTO `agence` (`numAgence`, `nom`, `adressePostale`, `numTelephone`, `adr
 
 DROP TABLE IF EXISTS `assistant_telephonique`;
 CREATE TABLE IF NOT EXISTS `assistant_telephonique` (
-  `numEmploye` int(11) NOT NULL,
+  `numEmploye` int(5) NOT NULL,
   `nom` varchar(25) NOT NULL,
   `prenom` varchar(25) NOT NULL,
   `adressePerso` varchar(50) NOT NULL,
@@ -93,15 +93,15 @@ INSERT INTO `assistant_telephonique` (`numEmploye`, `nom`, `prenom`, `adressePer
 
 DROP TABLE IF EXISTS `client`;
 CREATE TABLE IF NOT EXISTS `client` (
-  `numClient` int(11) NOT NULL,
+  `numClient` int(6) NOT NULL,
   `raisonSociale` varchar(6) NOT NULL,
   `numSIREN` varchar(25) NOT NULL,
   `codeAPE` varchar(5) NOT NULL,
   `adressePostale` varchar(50) NOT NULL,
   `numTelephone` varchar(10) NOT NULL,
-  `numTelecopie` varchar(50) NOT NULL,
+  `numTelecopie` varchar(10) NOT NULL,
   `adresseMail` varchar(50) NOT NULL,
-  `distanceAgence` varchar(3) NOT NULL,
+  `distanceAgence` varchar(6) NOT NULL,
   `dureeTrajet` varchar(9) NOT NULL,
   `numAgence` int(4) NOT NULL,
   PRIMARY KEY (`numClient`),
@@ -113,7 +113,8 @@ CREATE TABLE IF NOT EXISTS `client` (
 --
 
 INSERT INTO `client` (`numClient`, `raisonSociale`, `numSIREN`, `codeAPE`, `adressePostale`, `numTelephone`, `numTelecopie`, `adresseMail`, `distanceAgence`, `dureeTrajet`, `numAgence`) VALUES
-(1, 'SELARL', '362 521 879 00034', '4711D', '59110', '0620635489', '0150607080', 'machin@truc.fr', '3', '45', 1);
+(1, 'SELARL', '362 521 879 00034', '4711D', '59110', '0620635489', '0150607080', 'exemple1@orange.fr', '3', '45', 1),
+(2, 'SARL', '492 781 163 00045', '8264A', '75000', '0345333984', '0125954212', 'exemple2@gmail.com', '0.5', '5', 2);
 
 -- --------------------------------------------------------
 
@@ -126,10 +127,18 @@ CREATE TABLE IF NOT EXISTS `contratmaintenance` (
   `numContrat` int(11) NOT NULL AUTO_INCREMENT,
   `dateSignature` date NOT NULL,
   `dateEcheance` date NOT NULL,
-  `numClient` int(11) NOT NULL,
+  `numClient` int(6) NOT NULL,
   PRIMARY KEY (`numContrat`),
   KEY `fk_numClientContrat` (`numClient`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `contratmaintenance`
+--
+
+INSERT INTO `contratmaintenance` (`numContrat`, `dateSignature`, `dateEcheance`, `numClient`) VALUES
+(1, '2019-12-16', '2021-12-16', 1),
+(2, '2018-01-17', '2020-01-17', 2);
 
 -- --------------------------------------------------------
 
@@ -166,12 +175,12 @@ CREATE TABLE IF NOT EXISTS `famillemateriel` (
 
 DROP TABLE IF EXISTS `intervention`;
 CREATE TABLE IF NOT EXISTS `intervention` (
-  `numIntervention` int(11) NOT NULL AUTO_INCREMENT,
-  `date` date DEFAULT NULL,
+  `numIntervention` int(6) NOT NULL AUTO_INCREMENT,
+  `date` varchar(10) DEFAULT NULL,
   `heure` varchar(5) DEFAULT NULL,
   `tempsIntervention` varchar(20) NOT NULL,
   `commentaireTechnicien` varchar(1024) DEFAULT NULL,
-  `numClient` int(11) NOT NULL,
+  `numClient` int(6) NOT NULL,
   `numEmploye` int(11) NOT NULL,
   PRIMARY KEY (`numIntervention`),
   KEY `fk_numEmploye` (`numEmploye`),
@@ -200,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `materiel` (
   `emplacement` varchar(50) NOT NULL,
   `referenceType` varchar(4) NOT NULL,
   `numContrat` int(11) NOT NULL,
-  `numClient` int(11) NOT NULL,
+  `numClient` int(6) NOT NULL,
   PRIMARY KEY (`numSerie`),
   KEY `fk_numClient` (`numClient`),
   KEY `fk_refereceType` (`referenceType`),
@@ -215,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `materiel` (
 
 DROP TABLE IF EXISTS `region`;
 CREATE TABLE IF NOT EXISTS `region` (
-  `codeRegion` int(11) NOT NULL AUTO_INCREMENT,
+  `codeRegion` int(4) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(50) NOT NULL,
   PRIMARY KEY (`codeRegion`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
@@ -266,7 +275,8 @@ CREATE TABLE IF NOT EXISTS `technicien` (
 --
 
 INSERT INTO `technicien` (`numEmploye`, `nom`, `prenom`, `adressePerso`, `mail`, `numTelephone`, `qualification`, `dateObtentionQualification`, `dateEmbauche`, `numAgence`) VALUES
-(1, 'Pierre', 'Jean', 'rue des Gantois', 'jean.pierre@gmail.com', '0658521793', 'Master', '2019-06-03', '2019-11-04', 1);
+(1, 'Pierre', 'Jean', 'rue des Gantois', 'jean.pierre@gmail.com', '0658521793', 'Master', '2019-06-03', '2019-11-04', 1),
+(2, 'Jean', 'Baptiste', 'Rue Alain de Lille', 'baptiste.jean@hotmail.fr', '0616359548', 'BTS SIO SISR', '2019-06-20', '2019-09-09', 1);
 
 -- --------------------------------------------------------
 
@@ -299,7 +309,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`idUsers`),
   KEY `proprietaireTech` (`proprietaireTech`),
   KEY `proprietaireAssistant` (`proprietaireAssistant`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`idUsers`, `login`, `mdp`, `proprietaireTech`, `proprietaireAssistant`) VALUES
+(1, 'jpierre', 'jpierre', 1, NULL),
+(2, 'ldavid', 'ldavid', NULL, 1),
+(3, 'jbaptiste', 'jbaptiste', 2, NULL);
 
 --
 -- Contraintes pour les tables déchargées
