@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 16 déc. 2019 à 09:50
+-- Généré le :  lun. 16 déc. 2019 à 10:10
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -295,7 +295,8 @@ CREATE TABLE IF NOT EXISTS `technicien` (
 
 INSERT INTO `technicien` (`numEmploye`, `nom`, `prenom`, `adressePerso`, `mail`, `numTelephone`, `qualification`, `dateObtentionQualification`, `dateEmbauche`, `numAgence`) VALUES
 (1, 'Pierre', 'Jean', 'Rue des Gantois', 'jean.pierre@gmail.com', '0658521793', 'Master', '2019-06-03', '2019-11-04', 1),
-(2, 'Jean', 'Baptiste', 'Rue Alain de Lille', 'baptiste.jean@hotmail.fr', '0616359548', 'BTS SIO SISR', '2019-06-20', '2019-09-09', 1);
+(2, 'Jean', 'Baptiste', 'Rue Alain de Lille', 'baptiste.jean@hotmail.fr', '0616359548', 'BTS SIO SISR', '2019-06-20', '2019-09-09', 1),
+(5, 'Varingot', 'Tom', '42 rue de l\'infini', 'varingot.tom@gmail.com', '0612345678', 'Chef de Projet', '2019-09-02', '2019-09-02', 1);
 
 -- --------------------------------------------------------
 
@@ -336,7 +337,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`idUsers`),
   KEY `proprietaireTech` (`proprietaireTech`),
   KEY `proprietaireAssistant` (`proprietaireAssistant`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
@@ -345,7 +346,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`idUsers`, `login`, `mdp`, `proprietaireTech`, `proprietaireAssistant`) VALUES
 (1, 'jpierre', 'jpierre', 1, NULL),
 (2, 'ldavid', 'ldavid', NULL, 1),
-(3, 'jbaptiste', 'jbaptiste', 2, NULL);
+(3, 'jbaptiste', 'jbaptiste', 2, NULL),
+(5, 'tvaringot', 'tvaringot', 5, NULL);
 
 --
 -- Contraintes pour les tables déchargées
